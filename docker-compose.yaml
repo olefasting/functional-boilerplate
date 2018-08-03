@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  #web:
+  #  restart: always
+  #  environment:
+  #    HEDRA_ENV: dev
+  #  builds:
+  #  ports:
+  #    - 8080:8080
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 4Dw^)B1lb12l
+      POSTGRES_DB: hedra_dev
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    links:
+      - db:database
+    ports:
+      - 8080:8080
